@@ -71,7 +71,7 @@ RUN set -x \
 # Prepare base-image with core programs + repository                #
 #                                                                   #
 #####################################################################
-FROM debian:bullseye as base-image-core
+FROM nvidia/cuda:11.7.1-cudnn8-devel-ubuntu22.04 as base-image-core
 
 # Skip interactive post-install scripts
 ENV DEBIAN_FRONTEND=noninteractive
