@@ -204,7 +204,11 @@ RUN set -x \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/nginx.gpg] https://nginx.org/packages/mainline/debian/ bullseye nginx" > /etc/apt/sources.list.d/nginx.list
 
 # Install additional services required by ZM ("Recommends")
-# PHP-fpm not required for apache
+# #bullshit workaround for libssl 1.1.1 by manually installing
+RUN set -x \
+    && wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1-1ubuntu2.1~18.04.20_amd64.deb \
+    && dpkg -i libssl1.1_1.1.1-1ubuntu2.1~18.04.20_amd64.deb
+#PHP-fpm not required for apache
 RUN set -x \
     && apt-get update \
     && apt-get install -y \
