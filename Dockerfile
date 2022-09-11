@@ -98,7 +98,8 @@ RUN set -x \
     && apt-get update \
     && apt-get install -y \
         devscripts
-
+    && apt-get install -y \
+        equivs
 COPY --from=zm-source /zmsource/zoneminder_control /tmp/control
 
 # Create runtime package
